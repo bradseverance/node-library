@@ -1,0 +1,23 @@
+{
+  "name": "node-library",
+  "version": "1.0.0",
+  "description": "A Library application written in Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradseverance/node-library.git"
+  },
+  "author": "Brad P. Severance",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bradseverance/node-library/issues"
+  },
+  "homepage": "https://github.com/bradseverance/node-library#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
