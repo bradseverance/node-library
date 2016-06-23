@@ -18,10 +18,14 @@
   },
   "homepage": "https://github.com/bradseverance/node-library#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.4.2",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
-    "mongodb": "^2.1.18"
+    "express-session": "^1.13.0",
+    "mongodb": "^2.1.18",
+    "passport": "^0.3.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

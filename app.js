@@ -1,5 +1,14 @@
 // set up express
 var express = require('express');
+// parse that body
+var bodyParser = require('body-parser');
+// parse those cookies
+var cookieParser = require('cookie-parser');
+// passport
+var passport = require('passport');
+// session
+var session = require('express-session');
+
 var app = express();
 
 // port
@@ -17,21 +26,33 @@ var nav = [
   }
 ];
 
-
 // book router
 var bookRouter = require('./src/routes/bookRoutes')(nav);
 // admin router
 var adminRouter = require('./src/routes/adminRoutes')(nav);
+// auth router
+var authRouter = require('./src/routes/authRoutes')(nav);
 
-
+// middleware
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({extended: true}));
+app.use(cookieParser());
+app.use(session({
+  secret: 'library',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 // use our routes
 app.use('/Books', bookRouter);
 app.use('/Admin', adminRouter);
-
+app.use('/Auth', authRouter);
 
 app.get('/', function (req, res) {
   res.render('index', {
