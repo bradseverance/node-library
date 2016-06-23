@@ -43,8 +43,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+
+// passport
+require('./src/config/passport')(app);
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');

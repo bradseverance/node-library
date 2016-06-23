@@ -11,6 +11,14 @@ var router = function (nav) {
   // sign up
   authRouter.route('/signUp').post(function (req, res) {
     console.log(req.body);
+    req.login(req.body, function () {
+      res.redirect('/Auth/profile');
+    });
+  });
+
+  // profile
+  authRouter.route('/profile').get(function (req, res) {
+    res.json(req.user);
   });
 
   return authRouter;
