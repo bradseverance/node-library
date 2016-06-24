@@ -1,6 +1,15 @@
 /* override bootstrap styles */
 @import url('http://fonts.googleapis.com/css?family=Oswald:300,400:latin,latin-ext');
 
+/*
+#6C6E58 : green
+#3E423A : darker green
+#417378 : blue
+#A4CFBE : teal
+#F4F7D9 : white
+#f3f4eb : lighter white;
+ */
+
 .navbar-form input, .form-inline input {
   width:auto;
 }
@@ -8,42 +17,42 @@
 body {
   padding-top:50px;
   color:#646464;
-  background-color:#efefef;
+  background-color:#A4CFBE;
 }
 
 h1,h2,h3,.highlight,.navbar a,#masthead h4 {
   font-family:'Oswald',arial narrow,sans-serif;
+  color: #417378;
 }
 
-footer {
+#footer {
 
   margin-top:40px;
   padding-top:40px;
   padding-bottom:40px;
-  background-color:#cecece;
- 
 }
 
 
 #masthead {
   min-height:199px;
-  background-color:#000044;
-  color:#aaaacc;
+  background-color:#417378;
+  color:#F4F7D9;
 }
 
 #masthead h1 {
   font-size: 55px;
   line-height: 1;
-  color:#fefeff;
+  color:#f3f4eb;
   margin-top:50px;
 }
 
 #masthead .well {
   margin-top:31px;
-  background-color:#000044;
-  border-color:#000044;
-  // color:#efefff;
+  background-color:#417378;
+  /*border-color:#000044;*/
+  color:#efefff;
   min-height:127px;
+  border: none;
 }
 
 #topPanel {
@@ -62,7 +71,7 @@ footer {
 }
 
 .top-spacer {
-  background-color:#ffffff;
+  background-color:#F4F7D9;
   height:40px;
 }
 
@@ -82,21 +91,21 @@ a,a:hover {
 }
 
 .navbar-bright {
-  background-color:#111166;
+  background-color:#3E423A;
   color:#fff;
   margin-bottom: 0;
   border-width: 0;
 }
 
 .navbar-bright a, .navbar-bright .navbar-brand, #masthead h4 {
-  color:#ccccdd;
+  color:#F4F7D9;
   font-size:14px;
   text-transform: uppercase;
   letter-spacing:.08em;
 }
 
 .navbar-bright li > a:hover {
-  background-color:#000044;
+  background-color:#6C6E58;
 }
 
 .dropdown-menu {
@@ -119,6 +128,7 @@ a,a:hover {
 .panel {
   border-color:transparent;
   border-radius:0;
+  background-color: #F4F7D9;
 }
 
 .thumbnail {
@@ -157,7 +167,7 @@ a,a:hover {
   padding:6px;
   color:#fff;
 }
-    
+
 .btn-twitter {background-color:#4099FF;color:#fff;}
 .btn-facebook {background-color:#3B5998;color:#fff;}
 .btn-google-plus {background-color:#d34836;color:#fff;}
@@ -165,3 +175,5 @@ a,a:hover {
 .btn-twitter:hover {background-color:#3088FF;color:#62BBFF;}
 .btn-facebook:hover {background-color:#2A4998;color:#4C6BBA;}
 .btn-google-plus:hover {background-color:#C23836;color:#E45A58;}
+
+hr { border-top: 1px solid #A4CFBE !important; }
