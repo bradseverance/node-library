@@ -44,6 +44,8 @@ gulp.task('inject', function () {
 
 gulp.task('serve', ['style', 'inject'], function () {
 
+  require('dotenv').config();
+
   var options = {
     script: 'app.js',
     delayTime: 1,

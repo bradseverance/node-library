@@ -11,9 +11,7 @@ var router = function (nav) {
   // book list
   bookRouter.route('/').get(function (req, res) {
 
-    var url = 'mongodb://localhost:27017/libraryApp';
-
-    mongodb.connect(url, function (err, db) {
+    mongodb.connect(process.env.DB_URL, function (err, db) {
       var collection = db.collection('books');
       collection.find().toArray(function (err, results) {
         res.render('bookListView', {
@@ -32,9 +30,7 @@ var router = function (nav) {
 
     var id = new ObjectID(req.params.id);
 
-    var url = 'mongodb://localhost:27017/libraryApp';
-
-    mongodb.connect(url, function (err, db) {
+    mongodb.connect(process.env.DB_URL, function (err, db) {
       var collection = db.collection('books');
       collection.findOne({_id : id}, function (err, results) {
         res.render('bookView', {

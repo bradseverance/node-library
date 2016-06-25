@@ -47,8 +47,17 @@ app.use(session({
 // passport
 require('./src/config/passport')(app);
 
+// views
 app.set('views', './src/views');
-app.set('view engine', 'ejs');
+
+// handlebars
+var handlebars = require('express-handlebars');
+app.engine('.hbs', handlebars({
+  extname: '.hbs',
+  defaultLayout: 'main',
+  layoutsDir: 'src/views/layouts'
+}));
+app.set('view engine', '.hbs');
 
 // use our routes
 app.use('/Books', bookRouter);

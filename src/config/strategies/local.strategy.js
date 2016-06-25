@@ -13,11 +13,18 @@ module.exports = function () {
         passwordField: 'password'
       },
       function (username, password, done) {
-        var user = {
-          username: username,
-          password: password
-        };
-        done (null, user);
+
+        mongodb.connect(process.env.DB_URL, function (err, db) {
+
+          var collection = db.collection('users');
+
+          collection.findOne({username : username}, function (err, results) {
+            var user = results;
+            done(null, user);
+          });
+
+        });
+
       }
     )
   );
