@@ -6,6 +6,9 @@ var authRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 
+// passport
+var passport = require('passport');
+
 var router = function (nav) {
 
   // sign up
@@ -42,9 +45,17 @@ var router = function (nav) {
   });
 
   // login
-  authRouter.route('/login').post(function (req, res) {
-
-  });
+  authRouter.route('/login').post(
+    passport.authenticate(
+      'local',
+      {
+        failureRedirect: '/admin'
+      }
+    ),
+    function (req, res) {
+      res.redirect('/admin/home');
+    }
+  );
 
   return authRouter;
 

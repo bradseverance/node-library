@@ -58,6 +58,14 @@ var books = [
 
 var router = function (nav) {
 
+  // don't let anyone into the admin that's not me (basically)
+  adminRouter.use(function (req, res, next) {
+    if (!req.user) {
+      return res.redirect('/evilPerson');
+    }
+    next();
+  });
+
   adminRouter.route('/addBooks').get(function (req, res) {
 
     mongodb.connect(process.env.DB_URL, function (err, db) {
@@ -66,6 +74,15 @@ var router = function (nav) {
         res.send(results);
         db.close();
       });
+    });
+
+  });
+
+  adminRouter.route('/home').get(function (req, res) {
+
+    res.render('adminHomeView', {
+      title: 'Administrator Home',
+      nav: nav
     });
 
   });

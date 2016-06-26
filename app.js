@@ -26,12 +26,16 @@ var nav = [
   }
 ];
 
-// book router
-var bookRouter = require('./src/routes/bookRoutes')(nav);
-// admin router
-var adminRouter = require('./src/routes/adminRoutes')(nav);
+// main router
+var mainRouter = require('./src/routes/mainRoutes')(nav);
 // auth router
 var authRouter = require('./src/routes/authRoutes')(nav);
+// book router
+var bookRouter = require('./src/routes/bookRoutes')(nav);
+// author router
+var authorRouter = require('./src/routes/authorRoutes')(nav);
+// admin router
+var adminRouter = require('./src/routes/adminRoutes')(nav);
 
 // middleware
 app.use(express.static('public'));
@@ -60,20 +64,11 @@ app.engine('.hbs', handlebars({
 app.set('view engine', '.hbs');
 
 // use our routes
-app.use('/Books', bookRouter);
-app.use('/Admin', adminRouter);
+app.use('/', mainRouter);
 app.use('/Auth', authRouter);
-
-app.get('/', function (req, res) {
-  res.render('index', {
-    title: 'Library',
-    nav: nav
-  });
-});
-
-app.get('/books', function (req, res) {
-  res.send('Hello Books');
-});
+app.use('/Books', bookRouter);
+app.use('/Authors', authorRouter);
+app.use('/Admin', adminRouter);
 
 app.listen(port, function (error) {
   console.log('Running server on port' + port);

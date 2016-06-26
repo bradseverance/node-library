@@ -1,6 +1,6 @@
 var express = require('express');
 
-var bookRouter = express.Router();
+var authorRoutes = express.Router();
 
 // mongo db
 var mongodb = require('mongodb').MongoClient;
@@ -9,7 +9,7 @@ var ObjectID = require('mongodb').ObjectID;
 var router = function (nav) {
 
   // book list
-  bookRouter.route('/').get(function (req, res) {
+  authorRoutes.route('/').get(function (req, res) {
 
     mongodb.connect(process.env.DB_URL, function (err, db) {
 
@@ -27,7 +27,7 @@ var router = function (nav) {
   });
 
   // single book
-  bookRouter.route('/:id').get(function (req, res) {
+  authorRoutes.route('/:id').get(function (req, res) {
 
     var id = new ObjectID(req.params.id);
 
@@ -45,7 +45,7 @@ var router = function (nav) {
 
   });
 
-  return bookRouter;
+  return authorRoutes;
 
 };
 
