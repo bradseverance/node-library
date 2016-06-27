@@ -9,7 +9,7 @@ var adminController = function (bookService, nav) {
       return res.redirect('/evilPerson');
     }
     next();
-  }
+  };
 
   var getHome = function (req, res) {
 
@@ -18,13 +18,13 @@ var adminController = function (bookService, nav) {
       nav: nav
     });
 
-  }
+  };
 
   return {
     getHome: getHome,
     middleware: middleware
-  }
+  };
 
-}
+};
 
 module.exports = adminController;

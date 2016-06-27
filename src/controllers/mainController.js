@@ -7,7 +7,7 @@ var mainController = function (nav) {
       nav: nav
     });
 
-  }
+  };
 
   var getEvilPerson = function (req, res) {
 
@@ -16,13 +16,13 @@ var mainController = function (nav) {
       nav: nav
     });
 
-  }
+  };
 
   return {
     getIndex: getIndex,
     getEvilPerson: getEvilPerson
-  }
+  };
 
-}
+};
 
 module.exports = mainController;

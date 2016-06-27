@@ -11,17 +11,17 @@ var authController = function (nav) {
       nav: nav
     });
 
-  }
+  };
 
   var getLogin = function (req, res) {
     res.redirect('/admin/home');
-  }
+  };
 
   return {
     getAdmin: getAdmin,
     getLogin: getLogin
-  }
+  };
 
-}
+};
 
 module.exports = authController;

@@ -19,7 +19,7 @@ var bookController = function (bookService, nav) {
       });
     });
 
-  }
+  };
 
   var getBook = function (req, res) {
 
@@ -37,13 +37,13 @@ var bookController = function (bookService, nav) {
       });
     });
 
-  }
+  };
 
   return {
     getBooks: getBooks,
     getBook: getBook
-  }
+  };
 
-}
+};
 
 module.exports = bookController;
