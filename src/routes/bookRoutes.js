@@ -4,8 +4,10 @@ var bookRouter = express.Router();
 
 var router = function (nav) {
 
+  var bookService = require('../services/goodReadsService')();
+
   // controller
-  var bookController = require('../controllers/bookController')(null, nav);
+  var bookController = require('../controllers/bookController')(bookService, nav);
 
   // book list
   bookRouter.route('/').get(bookController.getBooks);
