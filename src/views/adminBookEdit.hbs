@@ -1,18 +1,33 @@
 <!-- a book -->
 <div class="row">
-  <br>
-  <div class="col-md-2 col-sm-3 text-center">
-    <a class="story-title" href="#"><img alt="" src="{{book.book.image_url}}"></a>
-  </div>
-  <div class="col-md-10 col-sm-9">
-    <h3>{{book.title}}</h3>
-    <div class="row">
-      <div class="col-xs-9">
-        <h4><span class="label label-default">{{book.author}}</span></h4>
+  <div class="col-md-12">
+    <h2>Edit Book</h2>
+    <p><em>Enter the book's goodreads ID number and click submit. The application will attempt to import data from goodreads.</em></p>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="goodreads-id">goodreads Book ID:</label>
+        <input type="text" class="form-control" id="goodreads-id" placeholder="ID">
       </div>
-      <div class="col-xs-3"></div>
-    </div>
-    <br>{{{book.book.description}}}<br>
+      <button type="submit" class="btn btn-primary">Import goodreads Data</button>
+    </form>
+    <hr>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Book Title">
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author" name="author" placeholder="Book Author">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" rows="3" id="description" name="description"></textarea>
+      </div>
+      <hr>
+
+
+
+    </form>
   </div>
 </div>
-<hr>

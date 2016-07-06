@@ -5,7 +5,7 @@ var adminRouter = express.Router();
 var router = function (nav) {
 
   // goodreads service
-   var goodReadsService = require('../services/goodReadsService')();
+  var goodReadsService = require('../services/goodReadsService')();
 
   // controller
   var adminController = require('../controllers/adminController')(goodReadsService, nav);
