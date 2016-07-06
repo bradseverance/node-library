@@ -19,7 +19,6 @@
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.3",
     "datatables.net": "^1.10.12",
-    "datatables.net-dt": "^1.10.12",
     "datatables.net-bs": "^1.10.12",
     "datatables.net-autofill": "^2.1.2",
     "datatables-autofill-bootstrap": "datatables.net-autofill-bs#^2.1.2",

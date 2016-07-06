@@ -7,7 +7,7 @@ var router = function (nav) {
   // controller
   var adminController = require('../controllers/adminController')(null, nav);
 
-  adminRouter.use(adminController.middleware);
+  //adminRouter.use(adminController.middleware);
 
   // home
   adminRouter.route('/home').get(adminController.getHome);
