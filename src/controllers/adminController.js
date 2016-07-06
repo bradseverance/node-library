@@ -13,9 +13,18 @@ var adminController = function (bookService, nav) {
 
   var getHome = function (req, res) {
 
-    res.render('adminHomeView', {
-      title: 'Administrator Home',
-      nav: nav
+    mongodb.connect(process.env.DB_URL, function (err, db) {
+
+      var collection = db.collection('books');
+      collection.find().toArray(function (err, results) {
+        res.render('adminHomeView', {
+          title: 'Administrator Home',
+          nav: nav,
+          books: results
+        });
+        db.close();
+      });
+
     });
 
   };

@@ -9,6 +9,7 @@ var router = function (nav) {
 
   adminRouter.use(adminController.middleware);
 
+  // home
   adminRouter.route('/home').get(adminController.getHome);
 
   return adminRouter;

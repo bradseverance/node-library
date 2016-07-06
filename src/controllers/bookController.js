@@ -17,6 +17,7 @@ var bookController = function (bookService, nav) {
         });
         db.close();
       });
+
     });
 
   };

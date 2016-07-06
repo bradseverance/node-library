@@ -33,13 +33,13 @@ gulp.task('inject', function () {
   var options = {
     bowerJson: require('./bower.json'),
     directory: './public/lib',
-    ignorePath: '../../public'
+    ignorePath: '../../../public'
   };
 
-  return gulp.src('./src/views/*.html')
+  return gulp.src('./src/views/layouts/*.hbs')
     .pipe(wiredep(options))
     .pipe(inject(injectSrc, injectOptions))
-    .pipe(gulp.dest('./src/views'));
+    .pipe(gulp.dest('./src/views/layouts/'));
 });
 
 gulp.task('serve', ['style', 'inject'], function () {
