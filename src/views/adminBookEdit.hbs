@@ -12,44 +12,45 @@
     </form>
     <hr>
     <form action="/admin/upsertbook" method="post">
+      <input type="hidden" name="_id" id="_id" value="{{book._id}}">
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Book Title">
+        <input type="text" class="form-control" id="title" name="title" placeholder="Book Title" value="{{book.title}}">
       </div>
       <div class="form-group">
         <label for="author">Author</label>
-        <input type="text" class="form-control" id="author" name="author" placeholder="Book Author">
+        <input type="text" class="form-control" id="author" name="author" placeholder="Book Author" value="{{book.author}}">
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" rows="3" id="description" name="description"></textarea>
+        <textarea class="form-control" rows="3" id="description" name="description">{{book.description}}</textarea>
       </div>
       <div class="form-group">
         <label style="margin-right: 10px">Rate the Book:</label>
         <label class="radio-inline">
-          <input type="radio" name="stars" id="stars-1" value="1">
+          <input type="radio" name="stars" id="stars-1" value="1" {{#compare book.stars 1}}checked{{/compare}}>
           <i class="fa fa-star" aria-hidden="true"></i>
         </label>
         <label class="radio-inline">
-          <input type="radio" name="stars" id="stars-2" value="2">
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="stars" id="stars-3" value="3">
-          <i class="fa fa-star" aria-hidden="true"></i>
+          <input type="radio" name="stars" id="stars-2" value="2" {{#compare book.stars 2}}checked{{/compare}}>
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star" aria-hidden="true"></i>
         </label>
         <label class="radio-inline">
-          <input type="radio" name="stars" id="stars-4" value="4">
-          <i class="fa fa-star" aria-hidden="true"></i>
+          <input type="radio" name="stars" id="stars-3" value="3" {{#compare book.stars 3}}checked{{/compare}}>
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star" aria-hidden="true"></i>
         </label>
         <label class="radio-inline">
-          <input type="radio" name="stars" id="stars-5" value="5">
+          <input type="radio" name="stars" id="stars-4" value="4" {{#compare book.stars 4}}checked{{/compare}}>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="stars" id="stars-5" value="5" {{#compare book.stars 5}}checked{{/compare}}>
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star" aria-hidden="true"></i>
           <i class="fa fa-star" aria-hidden="true"></i>
@@ -59,7 +60,7 @@
       </div>
       <div class="form-group">
         <label for="description">Comments</label>
-        <textarea class="form-control" rows="3" id="comments" name="comments"></textarea>
+        <textarea class="form-control" rows="3" id="comments" name="comments">{{book.comments}}</textarea>
       </div>
       <hr>
       <button type="submit" class="btn btn-primary">Create Book Record</button>

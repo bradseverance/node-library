@@ -56,10 +56,21 @@ app.set('views', './src/views');
 
 // handlebars
 var handlebars = require('express-handlebars');
+
+
+
 app.engine('.hbs', handlebars({
   extname: '.hbs',
   defaultLayout: 'main',
-  layoutsDir: 'src/views/layouts'
+  layoutsDir: 'src/views/layouts',
+  helpers: {
+    compare: function (var1, var2, options) {
+      if(var1 == var2) {
+        return options.fn(this);
+      }
+      return options.inverse(this);
+    }
+  }
 }));
 app.set('view engine', '.hbs');
 

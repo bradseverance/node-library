@@ -65,11 +65,12 @@ var adminController = function (goodReadsService, nav) {
     var book = {
       _id: 0,
       title: '',
-      genre: '',
       author: '',
+      genre: '',
       description: '',
+      stars: 5,
       comments: '',
-      stars: 5
+      cover: ''
     };
 
     res.render('adminBookEdit', {
@@ -84,15 +85,25 @@ var adminController = function (goodReadsService, nav) {
   // --------------------------------------- //
   var upsertBook = function (req, res) {
 
+    console.log(req.body);
+
     // make sure variables exists
     var vars = {
       _id: req.body._id || 0,
       title: req.body.title || '',
       author: req.body.author || '',
-      start: req.body.stars || 5,
+      genre: req.body.genre || '',
+      description: req.body.description || '',
+      stars: req.body.stars || 5,
       comments: req.body.comments || '',
       cover: req.body.cover || ''
     };
+
+    res.render('adminBookEdit', {
+      title: 'New Book',
+      nav: nav,
+      book: vars
+    });
 
   };
 
