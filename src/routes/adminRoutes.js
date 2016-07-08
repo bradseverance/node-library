@@ -21,6 +21,9 @@ var router = function (nav) {
   // new book
   adminRouter.route('/newbook').get(adminController.newBook);
 
+  // upsert book
+  adminRouter.route('/upsertbook').post(adminController.upsertBook);
+
   return adminRouter;
 
 };

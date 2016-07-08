@@ -10,10 +10,10 @@ var router = function (nav) {
   var bookController = require('../controllers/bookController')(bookService, nav);
 
   // book list
-  bookRouter.route('/').get(bookController.getBooks);
+  bookRouter.route('/list').get(bookController.getBooks);
 
   // single book
-  bookRouter.route('/:id').get(bookController.getBook);
+  bookRouter.route('/book/:id').get(bookController.getBook);
 
   return bookRouter;
 

@@ -77,12 +77,30 @@ var adminController = function (goodReadsService, nav) {
       nav: nav,
       book: book
     });
-  }
+  };
+
+  // --------------------------------------- //
+  // upsertBook                              //
+  // --------------------------------------- //
+  var upsertBook = function (req, res) {
+
+    // make sure variables exists
+    var vars = {
+      _id: req.body._id || 0,
+      title: req.body.title || '',
+      author: req.body.author || '',
+      start: req.body.stars || 5,
+      comments: req.body.comments || '',
+      cover: req.body.cover || ''
+    };
+
+  };
 
   return {
     getHome: getHome,
     getBook: getBook,
     newBook: newBook,
+    upsertBook: upsertBook,
     middleware: middleware
   };
 

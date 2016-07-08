@@ -65,10 +65,9 @@ app.set('view engine', '.hbs');
 
 // use our routes
 app.use('/', mainRouter);
-app.use('/Auth', authRouter);
-app.use('/Books', bookRouter);
-app.use('/Authors', authorRouter);
-app.use('/Admin', adminRouter);
+app.use('/auth', authRouter);
+app.use('/books', bookRouter);
+app.use('/admin', adminRouter);
 
 app.listen(port, function (error) {
   console.log('Running server on port' + port);

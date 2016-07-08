@@ -4,6 +4,9 @@ var ObjectID = require('mongodb').ObjectID;
 
 var bookController = function (bookService, nav) {
 
+  // --------------------------------------- //
+  // getBooks                                //
+  // --------------------------------------- //
   var getBooks = function (req, res) {
 
     mongodb.connect(process.env.DB_URL, function (err, db) {
@@ -22,6 +25,9 @@ var bookController = function (bookService, nav) {
 
   };
 
+  // --------------------------------------- //
+  // getBook                                 //
+  // --------------------------------------- //
   var getBook = function (req, res) {
 
     var id = new ObjectID(req.params.id);
