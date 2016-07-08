@@ -4,6 +4,9 @@ var ObjectID = require('mongodb').ObjectID;
 
 var adminController = function (goodReadsService, nav) {
 
+  // --------------------------------------- //
+  // middleware                              //
+  // --------------------------------------- //
   var middleware = function (req, res, next) {
     if (!req.user) {
       return res.redirect('/evilPerson');
@@ -11,6 +14,9 @@ var adminController = function (goodReadsService, nav) {
     next();
   };
 
+  // --------------------------------------- //
+  // getHome                                 //
+  // --------------------------------------- //
   var getHome = function (req, res) {
 
     mongodb.connect(process.env.DB_URL, function (err, db) {
@@ -29,6 +35,9 @@ var adminController = function (goodReadsService, nav) {
 
   };
 
+  // --------------------------------------- //
+  // getBook                                 //
+  // --------------------------------------- //
   var getBook = function (req, res) {
 
     var id = new ObjectID(req.params.id);
@@ -36,8 +45,9 @@ var adminController = function (goodReadsService, nav) {
     mongodb.connect(process.env.DB_URL, function (err, db) {
       var collection = db.collection('books');
       collection.findOne({_id : id}, function (err, results) {
+        console.log(results);
         res.render('adminBookEdit', {
-          title: 'Book' + id,
+          title: 'Edit Book',
           nav: nav,
           book: results
         });
@@ -47,9 +57,32 @@ var adminController = function (goodReadsService, nav) {
 
   };
 
+  // --------------------------------------- //
+  // newBook                                 //
+  // --------------------------------------- //
+  var newBook = function (req, res) {
+
+    var book = {
+      _id: 0,
+      title: '',
+      genre: '',
+      author: '',
+      description: '',
+      comments: '',
+      stars: 5
+    };
+
+    res.render('adminBookEdit', {
+      title: 'New Book',
+      nav: nav,
+      book: book
+    });
+  }
+
   return {
     getHome: getHome,
     getBook: getBook,
+    newBook: newBook,
     middleware: middleware
   };
 

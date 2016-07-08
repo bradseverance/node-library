@@ -16,7 +16,10 @@ var router = function (nav) {
   adminRouter.route('/home').get(adminController.getHome);
 
   // edit book
-  adminRouter.route('/books/:id').get(adminController.getBook);
+  adminRouter.route('/book/:id').get(adminController.getBook);
+
+  // new book
+  adminRouter.route('/newbook').get(adminController.newBook);
 
   return adminRouter;
 
