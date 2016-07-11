@@ -17,11 +17,11 @@ var port = process.env.PORT || 5000;
 // nav
 var nav = [
   {
-    link: '/Books',
+    link: '/books/list',
     text: 'Books'
   },
   {
-    link: '/Authors',
+    link: '/books/authors',
     text: 'Authors'
   }
 ];

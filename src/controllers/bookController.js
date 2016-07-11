@@ -26,6 +26,27 @@ var bookController = function (bookService, nav) {
   };
 
   // --------------------------------------- //
+  // getAuthors                              //
+  // --------------------------------------- //
+  var getAuthors = function (req, res) {
+
+    mongodb.connect(process.env.DB_URL, function (err, db) {
+
+      var collection = db.collection('books');
+      collection.find().toArray(function (err, results) {
+        res.render('bookListView', {
+          title: 'Book List',
+          nav: nav,
+          books: results
+        });
+        db.close();
+      });
+
+    });
+
+  };
+
+  // --------------------------------------- //
   // getBook                                 //
   // --------------------------------------- //
   var getBook = function (req, res) {
@@ -54,6 +75,7 @@ var bookController = function (bookService, nav) {
 
   return {
     getBooks: getBooks,
+    getAuthors: getAuthors,
     getBook: getBook
   };
 

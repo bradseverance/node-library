@@ -12,6 +12,9 @@ var router = function (nav) {
   // book list
   bookRouter.route('/list').get(bookController.getBooks);
 
+  // author list
+  bookRouter.route('/authors').get(bookController.getAuthors);
+
   // single book
   bookRouter.route('/book/:id').get(bookController.getBook);
 

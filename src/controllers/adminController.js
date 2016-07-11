@@ -63,7 +63,7 @@ var adminController = function (goodReadsService, nav) {
   var newBook = function (req, res) {
 
     var book = {
-      _id: 0,
+      _id: '',
       title: '',
       author: '',
       genre: '',
@@ -85,24 +85,50 @@ var adminController = function (goodReadsService, nav) {
   // --------------------------------------- //
   var upsertBook = function (req, res) {
 
-    console.log(req.body);
+    var starCheck = new RegExp('^[1-5]$');
+    var isGood = false;
 
-    // make sure variables exists
-    var vars = {
-      _id: req.body._id || 0,
-      title: req.body.title || '',
-      author: req.body.author || '',
-      genre: req.body.genre || '',
-      description: req.body.description || '',
-      stars: req.body.stars || 5,
-      comments: req.body.comments || '',
-      cover: req.body.cover || ''
-    };
+    // validate _id
+    if (!ObjectID.isValid(req.body._id)) {
+      req.body._id = null;
+    }
+
+    // validate stars
+    if (!starCheck.test(req.body.stars)) {
+      req.body.stars = 5;
+    } else {
+      req.body.stars = parseInt(req.body.stars);
+    }
+
+    // trim strings
+    req.body.title = req.body.title.trim();
+    req.body.description =req.body.description.trim();
+    req.body.comments = req.body.comments.trim();
+    req.body.author = req.body.author.trim();
+
+    // book must have a title
+    if (req.body.title !== '') {
+      isGood = true;
+    }
+
+    // update book
+    if (req.body._id) {
+
+
+
+
+    // new book
+    } else {
+
+    }
+
+    console.log(req.body);
+    console.log(isGood);
 
     res.render('adminBookEdit', {
       title: 'New Book',
       nav: nav,
-      book: vars
+      book: req.body
     });
 
   };
