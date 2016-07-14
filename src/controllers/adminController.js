@@ -1,6 +1,8 @@
 // mongo db
 var mongodb = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
+// validator
+var validator = require('validator');
 
 var adminController = function (goodReadsService, nav) {
 
@@ -73,10 +75,13 @@ var adminController = function (goodReadsService, nav) {
       cover: ''
     };
 
+    var response = {initialize: 1};
+
     res.render('adminBookEdit', {
       title: 'New Book',
       nav: nav,
-      book: book
+      book: book,
+      response: response
     });
   };
 
@@ -85,50 +90,60 @@ var adminController = function (goodReadsService, nav) {
   // --------------------------------------- //
   var upsertBook = function (req, res) {
 
-    var starCheck = new RegExp('^[1-5]$');
-    var isGood = false;
+    var errors = [];
+    var response = {
+      initialize: 0
+    };
+    book = {};
 
     // validate _id
     if (!ObjectID.isValid(req.body._id)) {
-      req.body._id = null;
+      book.body._id = null;
     }
 
     // validate stars
-    if (!starCheck.test(req.body.stars)) {
-      req.body.stars = 5;
+    if (!validator.isIn(req.body.stars, ['1','2','3','4','5'])) {
+      book.stars = 5;
     } else {
-      req.body.stars = parseInt(req.body.stars);
+      book.stars = parseInt(req.body.stars);
     }
 
     // trim strings
-    req.body.title = req.body.title.trim();
-    req.body.description =req.body.description.trim();
-    req.body.comments = req.body.comments.trim();
-    req.body.author = req.body.author.trim();
+    book.title = req.body.title.trim();
+    book.description =req.body.description.trim();
+    book.comments = req.body.comments.trim();
+    book.author = req.body.author.trim();
+    book.cover = req.body.cover.trim();
 
     // book must have a title
-    if (req.body.title !== '') {
-      isGood = true;
+    if (validator.isNull(book.title)) {
+      errors.push('You must enter a title');
     }
 
-    // update book
-    if (req.body._id) {
+    if (validator.isNull(book.author)) {
+      errors.push('You must enter an author');
+    }
 
+    if (!validator.isNull(book.cover) && !validator.isURL(book.cover)) {
+      errors.push('You must enter a valid URL for the cover');
+    }
 
-
-
-    // new book
+    if (errors.length) {
+      response.status = 0;
+      response.flashClass = 'bg-danger';
+      response.message = 'There were errors in you inputs';
     } else {
-
+      response.status = 1;
+      response.flashClass = 'bg-success';
+      response.message = 'The book has been entered successfully';
     }
 
-    console.log(req.body);
-    console.log(isGood);
 
     res.render('adminBookEdit', {
       title: 'New Book',
       nav: nav,
-      book: req.body
+      book: book,
+      response: response
     });
 
   };

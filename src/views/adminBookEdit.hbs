@@ -11,6 +11,11 @@
       <button type="submit" class="btn btn-primary">Import goodreads Data</button>
     </form>
     <hr>
+    <div class="flash-message-container">
+      {{#compare response.initialize 0}}
+        <div class="flash-message {{response.flashClass}}">{{response.message}}</div>
+      {{/compare}}
+    </div>
     <form action="/admin/upsertbook" method="post">
       <input type="hidden" name="_id" id="_id" value="{{book._id}}">
       <div class="form-group">
@@ -20,6 +25,14 @@
       <div class="form-group">
         <label for="author">Author</label>
         <input type="text" class="form-control" id="author" name="author" placeholder="Book Author" value="{{book.author}}">
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="text" class="form-control" id="genre" name="genre" placeholder="Book Genre" value="{{book.genre}}">
+      </div>
+      <div class="form-group">
+        <label for="genre">Cover URL</label>
+        <input type="text" class="form-control" id="cover" name="cover" placeholder="Book Cover" value="{{book.cover}}">
       </div>
       <div class="form-group">
         <label for="description">Description</label>

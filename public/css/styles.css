@@ -183,3 +183,11 @@ hr { border-top: 1px solid #d3d3d3 !important; }
 table.dataTable {
   background-color: #f5f5f5
 }
+
+.flash-message-container {
+
+}
+
+.flash-message {
+  padding: 15px;
+}
