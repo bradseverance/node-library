@@ -13,7 +13,7 @@
     <hr>
     <div class="flash-message-container">
       {{#compare response.initialize 0}}
-        <div class="flash-message {{response.flashClass}}">{{response.message}}</div>
+        <div class="flash-message {{response.flashClass}}">{{{response.message}}}</div>
       {{/compare}}
     </div>
     <form action="/admin/upsertbook" method="post">
