@@ -1,7 +1,8 @@
 <!-- a book -->
 <div class="row">
   <div class="col-md-12">
-    <h2>Edit Book</h2>
+    <a href="/admin/home">Back to List</a>
+    <h2>{{#if book._id}}Update Book{{else}}New Book{{/if}}</h2>
     <p><em>Enter the book's goodreads ID number and click submit. The application will attempt to import data from goodreads.</em></p>
     <form class="form-inline">
       <div class="form-group">
@@ -12,8 +13,8 @@
     </form>
     <hr>
     <div class="flash-message-container">
-      {{#compare response.initialize 0}}
-        <div class="flash-message {{response.flashClass}}">{{{response.message}}}</div>
+      {{#compare initialize 0}}
+        <div class="flash-message {{flashClass}}">{{{message}}}</div>
       {{/compare}}
     </div>
     <form action="/admin/upsertbook" method="post">
@@ -76,7 +77,7 @@
         <textarea class="form-control" rows="3" id="comments" name="comments">{{book.comments}}</textarea>
       </div>
       <hr>
-      <button type="submit" class="btn btn-primary">Create Book Record</button>
+      <button type="submit" class="btn btn-primary">{{#if book._id}}Update{{else}}Create{{/if}} Book Record</button>
     </form>
   </div>
 </div>

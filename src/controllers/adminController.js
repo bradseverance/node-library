@@ -50,7 +50,12 @@ var adminController = function (goodReadsService, nav) {
         res.render('adminBookEdit', {
           title: 'Edit Book',
           nav: nav,
-          book: results
+          book: results,
+          initialize: req.flash('initialize'),
+          status: req.flash('status'),
+          flashClass: req.flash('flashClass'),
+          message: req.flash('message')
+
         });
         db.close();
       });
@@ -64,7 +69,7 @@ var adminController = function (goodReadsService, nav) {
   var newBook = function (req, res) {
 
     var book = {
-      _id: '',
+      _id: 0,
       title: '',
       author: '',
       genre: '',
@@ -142,10 +147,13 @@ var adminController = function (goodReadsService, nav) {
       }
       response.message += '</ul>';
       res.render('adminBookEdit', {
-        title: 'New Book',
+        title: 'Edit Book',
         nav: nav,
         book: book,
-        response: response
+        initialize: response.initialize,
+        status: response.status,
+        flashClass: response.flashClass,
+        message: response.message
       });
     } else {
       response.status = 1;
@@ -167,7 +175,6 @@ var adminController = function (goodReadsService, nav) {
             comments: book.comments,
             cover: book.cover
           }, function (err, results) {
-            console.log(results.ops[0]);
             res.render('adminBookEdit', {
               title: 'Edit Book',
               nav: nav,
@@ -189,12 +196,12 @@ var adminController = function (goodReadsService, nav) {
             comments: book.comments,
             cover: book.cover
           }, function (err, results) {
-            res.render('adminBookEdit', {
-              title: 'Edit Book',
-              nav: nav,
-              book: results,
-              response: response
-            });
+
+            req.flash('initialize', 0);
+            req.flash('status', 1);
+            req.flash('flashClass', 'bg-success');
+            req.flash('message', 'The book has been updated successfully!');
+            res.redirect('/admin/book/' + book._id);
             db.close();
           });
         }

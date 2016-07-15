@@ -8,6 +8,8 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 // session
 var session = require('express-session');
+// flash messaging
+var flash = require('connect-flash');
 
 var app = express();
 
@@ -47,6 +49,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.use(flash());
 
 // passport
 require('./src/config/passport')(app);
