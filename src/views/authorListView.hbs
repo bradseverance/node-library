@@ -1,0 +1,15 @@
+{{#each authors}}
+  <!-- a book -->
+  <div class="row">
+    <br>
+    <div class="col-md-12 col-sm-12">
+      <h3>{{_id}}</h3>
+      <p>Book List</p>
+      <ul>
+        {{#each books}}<li>{{title}}</li>{{/each}}
+      </ul>
+      <br><br>
+    </div>
+  </div>
+  <hr>
+{{/each}}
