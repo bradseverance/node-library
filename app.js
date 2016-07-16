@@ -34,8 +34,6 @@ var mainRouter = require('./src/routes/mainRoutes')(nav);
 var authRouter = require('./src/routes/authRoutes')(nav);
 // book router
 var bookRouter = require('./src/routes/bookRoutes')(nav);
-// author router
-var authorRouter = require('./src/routes/authorRoutes')(nav);
 // admin router
 var adminRouter = require('./src/routes/adminRoutes')(nav);
 

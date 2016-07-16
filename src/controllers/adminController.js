@@ -175,12 +175,11 @@ var adminController = function (goodReadsService, nav) {
             comments: book.comments,
             cover: book.cover
           }, function (err, results) {
-            res.render('adminBookEdit', {
-              title: 'Edit Book',
-              nav: nav,
-              book: results.ops[0],
-              response: response
-            });
+            req.flash('initialize', 0);
+            req.flash('status', 1);
+            req.flash('flashClass', 'bg-success');
+            req.flash('message', 'The book has been created successfully!');
+            res.redirect('/admin/book/' + results.ops[0]._id);
             db.close();
           });
         // update book
@@ -196,7 +195,6 @@ var adminController = function (goodReadsService, nav) {
             comments: book.comments,
             cover: book.cover
           }, function (err, results) {
-
             req.flash('initialize', 0);
             req.flash('status', 1);
             req.flash('flashClass', 'bg-success');
