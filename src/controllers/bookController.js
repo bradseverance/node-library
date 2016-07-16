@@ -33,11 +33,14 @@ var bookController = function (bookService, nav) {
     mongodb.connect(process.env.DB_URL, function (err, db) {
 
       var collection = db.collection('books');
-      collection.find().toArray(function (err, results) {
-        res.render('bookListView', {
-          title: 'Book List',
+      collection.aggregate(
+         [
+           { $group : { _id : "$author", books: { $push: {id: "$_id", title: "$title", genre: "$genre"} } } }
+         ], function (err, results) {
+          res.render('authorListView', {
+            title: 'Book List',
           nav: nav,
-          books: results
+          authors: results
         });
         db.close();
       });
