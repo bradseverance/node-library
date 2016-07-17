@@ -35,16 +35,16 @@ var bookController = function (bookService, nav) {
       var collection = db.collection('books');
       collection.aggregate(
         [
-          { $group : {
-            _id : "$author",
+          {$group : {
+            _id : '$author',
             books: {
               $push: {
-                id: "$_id",
-                title: "$title",
-                genre: "$genre"
+                id: '$_id',
+                title: '$title',
+                genre: '$genre'
               }
             }
-          } }
+          }}
         ], function (err, results) {
         res.render('authorListView', {
           title: 'Book List',

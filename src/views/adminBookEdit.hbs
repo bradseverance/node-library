@@ -4,7 +4,7 @@
     <a href="/admin/home">Back to List</a>
     <h2>{{#if book._id}}Update Book ID: {{book._id}}{{else}}New Book{{/if}}</h2>
     <p><em>Enter the book's goodreads ID number and click submit. The application will attempt to import data from goodreads.</em></p>
-    <form class="form-inline">
+    <form class="form-inline" name="goodreads-form" id="goodreads-form">
       <div class="form-group">
         <label for="goodreads-id">goodreads Book ID:</label>
         <input type="text" class="form-control" id="goodreads-id" placeholder="ID">
@@ -81,3 +81,20 @@
     </form>
   </div>
 </div>
+
+<script>
+  $(function() {
+
+    console.log('hey');
+
+    $('#goodreads-form').submit(function (event) {
+      event.preventDefault();
+      console.log('testing');
+
+      $.isLoading({
+        class: 'fa fa-refresh fa-spin fa-3x fa-fw'
+      });
+    });
+
+  });
+</script>

@@ -99,6 +99,7 @@ var adminController = function (goodReadsService, nav) {
       initialize: 0
     };
     var book = {};
+    var i;
 
     // validate _id
     if (!ObjectID.isValid(req.body._id)) {
@@ -118,7 +119,7 @@ var adminController = function (goodReadsService, nav) {
     book.title = req.body.title.trim();
     book.author = req.body.author.trim();
     book.genre = req.body.genre.trim();
-    book.description =req.body.description.trim();
+    book.description = req.body.description.trim();
     book.comments = req.body.comments.trim();
     book.cover = req.body.cover.trim();
 
@@ -135,14 +136,12 @@ var adminController = function (goodReadsService, nav) {
       errors.push('You must enter a valid URL for the cover');
     }
 
-    console.log(errors);
-
     if (errors.length) {
       response.status = 0;
       response.flashClass = 'bg-danger';
       response.message = 'There were errors in you inputs:<br />';
       response.message += '<ul>';
-      for (i=0; i < errors.length; i++) {
+      for (i = 0; i <  errors.length; i++) {
         response.message += '<li>' + errors[i] + '</li>';
       }
       response.message += '</ul>';

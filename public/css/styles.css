@@ -11,19 +11,19 @@
  */
 
 .navbar-form input, .form-inline input {
-  width:auto;
+  width: auto;
 }
 
 body {
-  padding-top:50px;
-  color:#646464;
-  background-color:#A4CFBE;
+  padding-top: 50px;
+  color: #646464;
+  background-color: #A4CFBE;
   padding-bottom: 35px;
   height; 100%;
 }
 
-h1,h2,h3,.highlight,.navbar a,#masthead h4 {
-  font-family:'Oswald',arial narrow,sans-serif;
+h1, h2, h3, .highlight, .navbar a, #masthead h4 {
+  font-family: 'Oswald', arial narrow, sans-serif;
   color: #417378;
 }
 
@@ -37,53 +37,53 @@ footer {
 
 
 #masthead {
-  min-height:199px;
-  background-color:#417378;
-  color:#F4F7D9;
+  min-height: 199px;
+  background-color: #417378;
+  color: #F4F7D9;
 }
 
 #masthead h1 {
   font-size: 55px;
   line-height: 1;
-  color:#f3f4eb;
-  margin-top:50px;
+  color: #f3f4eb;
+  margin-top: 50px;
 }
 
 #masthead .well {
-  margin-top:31px;
-  background-color:#417378;
-  min-height:127px;
+  margin-top: 31px;
+  background-color: #417378;
+  min-height: 127px;
   border: none;
   box-shadow: none;
 }
 
 #topPanel {
-  padding-top:0px;
-  padding-left:22px;
-  padding-right:22px;
+  padding-top: 0px;
+  padding-left: 22px;
+  padding-right: 22px;
 }
 #topPanel .panel-body {
-  padding-top:0px;
+  padding-top: 0px;
 }
 
 .navbar.affix {
-  position:fixed;
-  top:0;
-  width:100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .top-spacer {
-  background-color:#F4F7D9;
-  height:40px;
+  background-color: #F4F7D9;
+  height: 40px;
 }
 
 a,a:hover {
-  color:#223344;
-  text-decoration:none;
+  color: #223344;
+  text-decoration: none;
 }
 
 .icon-bar {
-  background-color:#fff;
+  background-color: #fff;
 }
 
 @media screen and (min-width: 768px) {
@@ -93,21 +93,21 @@ a,a:hover {
 }
 
 .navbar-bright {
-  background-color:#3E423A;
-  color:#fff;
+  background-color: #3E423A;
+  color: #fff;
   margin-bottom: 0;
   border-width: 0;
 }
 
 .navbar-bright a, .navbar-bright .navbar-brand, #masthead h4 {
-  color:#F4F7D9;
-  font-size:14px;
+  color: #F4F7D9;
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing:.08em;
+  letter-spacing: .08em;
 }
 
 .navbar-bright li > a:hover {
-  background-color:#6C6E58;
+  background-color: #6C6E58;
 }
 
 .dropdown-menu {
@@ -115,48 +115,48 @@ a,a:hover {
 }
 
 .caret {
-  color:#fff;
+  color: #fff;
 }
 
 .navbar-toggle {
-  color:#fff;
-  border-width:0;
+  color: #fff;
+  border-width: 0;
 }
 
 .navbar-toggle:hover {
-  background-color:#fff;
+  background-color: #fff;
 }
 
 .panel {
-  border-color:transparent;
-  border-radius:0;
+  border-color: transparent;
+  border-radius: 0;
   background-color: #F4F7D9;
 }
 
 .thumbnail {
-  margin-bottom:8px;
+  margin-bottom: 8px;
 }
 
 .img-container {
-  overflow:hidden;
-  height:170px;
+  overflow: hidden;
+  height: 170px;
 }
 
 .img-container img {
-  min-width:280px;
-  min-height:180px;
-  max-width:380px;
-  max-height:280px;
+  min-width: 280px;
+  min-height: 180px;
+  max-width: 380px;
+  max-height: 280px;
 }
 
 .txt-container {
-  overflow:hidden;
-  height:100px;
+  overflow: hidden;
+  height: 100px;
 }
 
 .panel .lead {
-  overflow:hidden;
-  height:90px;
+  overflow: hidden;
+  height: 90px;
 }
 
 .label-float{
@@ -164,17 +164,30 @@ a,a:hover {
   position: absolute;
   top: 0;
   z-index: 1;
-  width:100%;
-  opacity:.9;
-  padding:6px;
-  color:#fff;
+  width: 100%;
+  opacity: .9;
+  padding: 6px;
+  color: #fff;
 }
 
-.btn-website {background-color:#9E352C;color:#fff;}
-.btn-facebook {background-color:#3B5998;color:#fff;}
-.btn-git {background-color:#a8a8a8;color:#fff;}
+.btn-website {
+  background-color: #9E352C;
+  color: #fff;
+}
 
-hr { border-top: 1px solid #d3d3d3 !important; }
+.btn-facebook {
+  background-color: #3B5998;
+  color: #fff;
+}
+
+.btn-git {
+  background-color: #a8a8a8;
+  color: #fff;
+}
+
+hr {
+  border-top: 1px solid #d3d3d3 !important;
+}
 
 #biv-container {
   padding-bottom: 35px;
@@ -184,10 +197,30 @@ table.dataTable {
   background-color: #f5f5f5
 }
 
-.flash-message-container {
-
-}
-
 .flash-message {
   padding: 15px;
+}
+
+// is-loading
+.isloading-wrapper.isloading-right {
+  margin-left: 10px;
+}
+
+.isloading-overlay{
+  position: relative;
+  text-align: center;
+}
+
+.isloading-overlay .isloading-wrapper {
+  background: #FFFFFF;
+  -webkit-border-radius: 7px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 7px;
+  -moz-background-clip: padding;
+  border-radius: 7px;
+  background-clip: padding-box;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 10px 20px;top:10%;
+  z-index: 9000;
 }
