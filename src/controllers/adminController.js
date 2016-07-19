@@ -207,11 +207,29 @@ var adminController = function (goodReadsService, nav) {
 
   };
 
+  // --------------------------------------- //
+  // importGoodReads                         //
+  // --------------------------------------- //
+  var importGoodReads = function (req, res) {
+
+    goodReadsService.getBookById(657, function (err, result) {
+      console.log(result.book.authors);
+      res.json({
+        image_url: result.book.image_url,
+        author: result.book.authors.author[0].name,
+        description: result.book.description
+      });
+    });
+
+
+  };
+
   return {
     getHome: getHome,
     getBook: getBook,
     newBook: newBook,
     upsertBook: upsertBook,
+    importGoodReads: importGoodReads,
     middleware: middleware
   };
 

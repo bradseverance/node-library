@@ -2,7 +2,7 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 
-var bookController = function (bookService, nav) {
+var bookController = function (goodReadsService, nav) {
 
   // --------------------------------------- //
   // getBooks                                //
@@ -69,7 +69,7 @@ var bookController = function (bookService, nav) {
       var collection = db.collection('books');
       collection.findOne({_id : id}, function (err, results) {
 
-        bookService.getBookById(results.bookId, function (err, book) {
+        goodReadsService.getBookById(results.bookId, function (err, book) {
           results.book = book;
 
           res.render('bookView', {

@@ -24,6 +24,9 @@ var router = function (nav) {
   // upsert book
   adminRouter.route('/upsertbook').post(adminController.upsertBook);
 
+  // import goodreads
+  adminRouter.route('/importGoodReads').get(adminController.importGoodReads);
+
   return adminRouter;
 
 };

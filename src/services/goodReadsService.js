@@ -20,9 +20,10 @@ var goodReadsService = function () {
       });
 
       response.on('end', function () {
-        console.log(str);
+        //console.log(str);
         parser.parseString(str, function (err, result) {
-          cb(null, result.GoodreadsResponse.book);
+          console.log(result);
+          cb(null, result.GoodreadsResponse);
         });
       });
 
