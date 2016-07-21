@@ -19,6 +19,9 @@
     </div>
     <form action="/admin/upsertbook" method="post">
       <input type="hidden" name="_id" id="_id" value="{{book._id}}">
+      <div id="admin-image-container">
+
+      </div>
       <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" name="title" placeholder="Book Title" value="{{book.title}}">
@@ -88,12 +91,22 @@
     $('#goodreads-form').submit(function (event) {
       event.preventDefault();
 
+      // goodreads id
+      var goodReadsID = $('#goodreads-id').val();
+
       $.isLoading({
         class: 'fa fa-refresh fa-spin fa-3x fa-fw'
       });
 
-      $.getJSON('/admin/importGoodReads', {goodReadsID: 1}).done(function (data) {
-        console.log(data);
+      $.getJSON('/admin/importGoodReads', {goodReadsID: goodReadsID}).done(function (data) {
+        $('#title').val(data.title);
+        $('#author').val(data.author);
+        $('#description').val(data.description);
+        $('#cover').val(data.cover);
+        // get cover image and paste it into image container
+        $('#admin-image-container').html('<img src="' + data.cover + '" />');
+
+        $.isLoading('hide');
       });
     });
 

@@ -212,10 +212,12 @@ var adminController = function (goodReadsService, nav) {
   // --------------------------------------- //
   var importGoodReads = function (req, res) {
 
-    goodReadsService.getBookById(657, function (err, result) {
-      console.log(result.book.authors);
+    console.log(req);
+
+    goodReadsService.getBookById(req.query.goodReadsID, function (err, result) {
       res.json({
-        image_url: result.book.image_url,
+        cover: result.book.image_url,
+        title: result.book.title,
         author: result.book.authors.author[0].name,
         description: result.book.description
       });

@@ -79,7 +79,6 @@ footer {
 
 a,a:hover {
   color: #223344;
-  text-decoration: none;
 }
 
 .icon-bar {
@@ -223,4 +222,8 @@ table.dataTable {
   margin: 0 auto;
   padding: 10px 20px;top:10%;
   z-index: 9000;
+}
+
+#admin-image-container {
+  margin-bottom: 15px;
 }

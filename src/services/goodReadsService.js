@@ -8,7 +8,7 @@ var goodReadsService = function () {
 
     var options = {
       host: 'www.goodreads.com',
-      path: '/book/show/656.xml?key=YqQ0xglciPIItTCGaGNM1g'
+      path: '/book/show/' + id +'.xml?key=YqQ0xglciPIItTCGaGNM1g'
     };
 
     var callback = function (response) {
@@ -20,9 +20,7 @@ var goodReadsService = function () {
       });
 
       response.on('end', function () {
-        //console.log(str);
         parser.parseString(str, function (err, result) {
-          console.log(result);
           cb(null, result.GoodreadsResponse);
         });
       });

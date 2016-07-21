@@ -1,8 +1,10 @@
 <!-- a book -->
 <div class="row">
-  <br>
+  <div class="col-md-12" style="margin-bottom: 25px">
+    <a href="/books/list">Back to List</a>
+  </div>
   <div class="col-md-2 col-sm-3 text-center">
-    <a class="story-title" href="#"><img alt="" src="{{book.book.image_url}}"></a>
+    <a class="story-title" href="#"><img alt="" src="{{book.cover}}"></a>
   </div>
   <div class="col-md-10 col-sm-9">
     <h3>{{book.title}}</h3>
@@ -12,7 +14,7 @@
       </div>
       <div class="col-xs-3"></div>
     </div>
-    <br>{{{book.book.description}}}<br>
+    <br>{{{book.description}}}<br>
   </div>
 </div>
 <hr>
