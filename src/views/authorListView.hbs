@@ -6,7 +6,7 @@
       <h3>{{_id}}</h3>
       <p>Book List</p>
       <ul>
-        {{#each books}}<li>{{title}}</li>{{/each}}
+        {{#each books}}<li><a href="/books/book/{{id}}">{{title}}</a></li>{{/each}}
       </ul>
       <br><br>
     </div>

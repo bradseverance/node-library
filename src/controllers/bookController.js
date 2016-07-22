@@ -13,6 +13,18 @@ var bookController = function (goodReadsService, nav) {
 
       var collection = db.collection('books');
       collection.find().toArray(function (err, results) {
+
+        var i = 0;
+
+        // loop over array and create excerpts
+        for (i; i < results.length; i++) {
+          if (results[i].hasOwnProperty('description')) {
+            results[i].excerpt = results[i].description.split(' ').slice(0, 25).join(' ');
+          } else {
+            results[i].excerpt = '';
+          }
+        }
+
         res.render('bookListView', {
           title: 'Book List',
           nav: nav,

@@ -223,7 +223,6 @@ var adminController = function (goodReadsService, nav) {
       });
     });
 
-
   };
 
   return {
