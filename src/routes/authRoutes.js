@@ -10,7 +10,7 @@ var router = function (nav) {
   // controller
   var authController = require('../controllers/authController')(nav);
 
-  // admin
+  // admin (login form)
   authRouter.route('/admin').get(authController.getAdmin);
 
   // login
@@ -18,10 +18,12 @@ var router = function (nav) {
     passport.authenticate(
       'local',
       {
-        failureRedirect: '/admin'
+        successRedirect: '/admin/home',
+        failureRedirect: '/auth/admin',
+        failureFlash: 'Invalid username or password.'
       }
-    ),
-    authController.getLogin
+    )//,
+    //authController.getLogin
   );
 
   return authRouter;

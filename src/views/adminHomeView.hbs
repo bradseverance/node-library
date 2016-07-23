@@ -27,7 +27,7 @@
             <td>{{author}}</td>
             <td>
               <a href="book/{{_id}}" role="button" class="btn btn-primary btn-xs book-edit">Edit</a>
-              <a role="button" class="btn btn-danger btn-xs">Delete</a>
+              <a data-id="{{_id}}" role="button" class="btn btn-danger btn-xs delete-book">Delete</a>
             </td>
           </tr>
         {{/each}}
@@ -37,6 +37,15 @@
 </div>
 <script>
   $(function () {
+
     $('#book-table').DataTable();
+
+    $('.delete-book').on('click', function (event) {
+
+      var id = $(this).attr('data-id');
+
+
+    });
+
   });
 </script>

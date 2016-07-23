@@ -4,9 +4,7 @@
     <br>
     <div class="col-md-2 col-sm-3 text-center">
       <a class="story-title" href="/books/book/{{_id}}">
-        {{#if cover}}
-          <img alt="{{title}}" src="{{cover}}" style="width:100px;" class="">
-        {{/if}}
+        <img style="width:100px;" alt="{{title}}" src="{{#if cover}}{{cover}}{{else}}/img/cover.png{{/if}}" />
       </a>
     </div>
     <div class="col-md-10 col-sm-9">

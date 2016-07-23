@@ -212,8 +212,6 @@ var adminController = function (goodReadsService, nav) {
   // --------------------------------------- //
   var importGoodReads = function (req, res) {
 
-    console.log(req);
-
     goodReadsService.getBookById(req.query.goodReadsID, function (err, result) {
       res.json({
         cover: result.book.image_url,

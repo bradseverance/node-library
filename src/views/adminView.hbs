@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <h3 style="text-align: center">Super Secret Login Form</h3>
+    <div class="flash-message-container">
+      {{#if failureMessage}}
+        <div class="flash-message bg-danger">{{{failureMessage}}}</div>
+      {{/if}}
+    </div>
     <form name="signupForm" action="/Auth/login" method="post">
       <div class="form-group">
         <label for="userName">User Name</label>

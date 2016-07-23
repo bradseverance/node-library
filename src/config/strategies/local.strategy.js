@@ -5,6 +5,7 @@ var LocalStrategy = require('passport-local').Strategy;
 // mongo db
 var mongodb = require('mongodb').MongoClient;
 
+
 module.exports = function () {
   passport.use(
     new LocalStrategy(
@@ -19,11 +20,15 @@ module.exports = function () {
           var collection = db.collection('users');
 
           collection.findOne({username : username}, function (err, results) {
-            if (results.password === password) {
-              var user = results;
-              done(null, user);
+            if (results) {
+              if (results.password === password) {
+                var user = results;
+                done(null, user);
+              } else {
+                done(null, false, { message: 'Incorrect password' });
+              }
             } else {
-              done('Bad Password', null);
+              done(null, false, { message: 'bibbles' });
             }
           });
 
