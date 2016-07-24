@@ -28,7 +28,11 @@ var adminController = function (goodReadsService, nav) {
         res.render('adminHomeView', {
           title: 'Administrator Home',
           nav: nav,
-          books: results
+          books: results,
+          initialize: req.flash('initialize'),
+          status: req.flash('status'),
+          flashClass: req.flash('flashClass'),
+          message: req.flash('message')
         });
         db.close();
       });
@@ -213,11 +217,40 @@ var adminController = function (goodReadsService, nav) {
   var importGoodReads = function (req, res) {
 
     goodReadsService.getBookById(req.query.goodReadsID, function (err, result) {
+
+      var authorName = '';
+
+      if (Array.isArray(result.book.authors)) {
+        authorName = result.books.authors[0].author.name;
+      } else {
+        authorName = result.book.authors.author.name;
+      }
       res.json({
         cover: result.book.image_url,
         title: result.book.title,
-        author: result.book.authors.author[0].name,
+        author: authorName,
         description: result.book.description
+      });
+    });
+
+  };
+
+  // --------------------------------------- //
+  // deleteBook                              //
+  // --------------------------------------- //
+  var deleteBook = function (req, res) {
+
+    var id = new ObjectID(req.params.id);
+
+    mongodb.connect(process.env.DB_URL, function (err, db) {
+      var collection = db.collection('books');
+      collection.deleteOne({_id : id}, function (err, results) {
+        req.flash('initialize', 0);
+        req.flash('status', 1);
+        req.flash('flashClass', 'bg-success');
+        req.flash('message', 'The book has been deleted successfully!');
+        res.redirect('/admin/home');
+        db.close();
       });
     });
 
@@ -229,6 +262,7 @@ var adminController = function (goodReadsService, nav) {
     newBook: newBook,
     upsertBook: upsertBook,
     importGoodReads: importGoodReads,
+    deleteBook: deleteBook,
     middleware: middleware
   };
 

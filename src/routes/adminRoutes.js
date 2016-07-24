@@ -27,6 +27,9 @@ var router = function (nav) {
   // import goodreads
   adminRouter.route('/importGoodReads').get(adminController.importGoodReads);
 
+  // delete book
+  adminRouter.route('/deletebook/:id').get(adminController.deleteBook);
+
   return adminRouter;
 
 };

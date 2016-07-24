@@ -1,10 +1,10 @@
 <!-- a book -->
 <div class="row">
   <div class="col-md-12" style="margin-bottom: 25px">
-    <a href="/books/list">Back to List</a>
+    <a class="serif-it" href="/books/list">Back to List</a>
   </div>
   <div class="col-md-2 col-sm-3 text-center">
-    <img style="width: 100px;" alt="{{book.title}}" src="{{#if cover}}{{cover}}{{else}}/img/cover.png{{/if}}" />
+    <img style="width: 100px;" alt="{{book.title}}" src="{{#if book.cover}}{{book.cover}}{{else}}/img/cover.png{{/if}}" />
   </div>
   <div class="col-md-10 col-sm-9">
     <h3>{{book.title}}</h3>
@@ -14,7 +14,44 @@
       </div>
       <div class="col-xs-3"></div>
     </div>
-    <br>{{{book.description}}}<br>
+    <br><div class="serif-it">{{{book.description}}}</div><br>
+    {{#if book.comments}}
+      <h4>My Comments</h4>
+      <div class="serif-it">{{book.comments}}</div><br>
+    {{/if}}
+    {{#if book.stars}}
+      <h4>I Give It:</h4>
+      {{#compare book.stars 5}}
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>&nbsp;Stars</span>
+      {{/compare}}
+      {{#compare book.stars 4}}
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>&nbsp;Stars</span>
+      {{/compare}}
+      {{#compare book.stars 3}}
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>&nbsp;Stars</span>
+      {{/compare}}
+      {{#compare book.stars 2}}
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>&nbsp;Stars</span>
+      {{/compare}}
+      {{#compare book.stars 1}}
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <span>&nbsp;Stars</span>
+      {{/compare}}
+    {{/if}}
   </div>
 </div>
 <hr>
