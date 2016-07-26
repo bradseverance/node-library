@@ -3,7 +3,7 @@ var mainController = function (nav) {
   var getIndex = function (req, res) {
 
     res.render('index', {
-      title: 'Books I\'ve Read',
+      title: 'Home',
       nav: nav
     });
 
@@ -12,7 +12,7 @@ var mainController = function (nav) {
   var getEvilPerson = function (req, res) {
 
     res.render('evilPerson', {
-      title: 'Books I\'ve Read',
+      title: 'You\'re Evil',
       nav: nav
     });
 

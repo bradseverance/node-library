@@ -59,7 +59,7 @@ var bookController = function (goodReadsService, nav) {
           }}
         ], function (err, results) {
         res.render('authorListView', {
-          title: 'Book List',
+          title: 'Author List',
           nav: nav,
           authors: results
         });
@@ -85,7 +85,7 @@ var bookController = function (goodReadsService, nav) {
           results.book = book;
 
           res.render('bookView', {
-            title: 'Book' + id,
+            title: 'Book View',
             nav: nav,
             book: results
           });
