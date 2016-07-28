@@ -20,3 +20,5 @@ And, of course, you can see my running example hosted [heroku!](https://books-iv
 + Make multi-user
 + Better error handling
 + Pagination for front-end
++ Favicon
++ Markdown Editor
