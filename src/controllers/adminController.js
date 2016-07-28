@@ -220,8 +220,8 @@ var adminController = function (goodReadsService, nav) {
 
       var authorName = '';
 
-      if (Array.isArray(result.book.authors)) {
-        authorName = result.books.authors[0].author.name;
+      if (Array.isArray(result.book.authors.author)) {
+        authorName = result.book.authors.author[0].name;
       } else {
         authorName = result.book.authors.author.name;
       }

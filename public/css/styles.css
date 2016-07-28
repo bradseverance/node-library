@@ -233,5 +233,11 @@ table.dataTable {
 }
 
 #admin-image-container {
-  margin-bottom: 15px;
+  margin: 15px 0;
+}
+
+#screenshot-container img {
+  float: left;
+  margin-right: 3px;
+  border: 1px solid #417378
 }

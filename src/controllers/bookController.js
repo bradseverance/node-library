@@ -1,6 +1,7 @@
 // mongo db
 var mongodb = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
+var striptags = require('striptags');
 
 var bookController = function (goodReadsService, nav) {
 
@@ -19,7 +20,8 @@ var bookController = function (goodReadsService, nav) {
         // loop over array and create excerpts
         for (i; i < results.length; i++) {
           if (results[i].hasOwnProperty('description')) {
-            results[i].excerpt = results[i].description.split(' ').slice(0, 25).join(' ');
+            results[i].excerpt = striptags(results[i].description);
+            results[i].excerpt = results[i].excerpt.split(' ').slice(0, 25).join(' ');
           } else {
             results[i].excerpt = '';
           }
