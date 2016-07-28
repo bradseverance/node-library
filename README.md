@@ -13,7 +13,7 @@ The Books I've Read application is built on the following technologies:
 + [bootstrap](http://getbootstrap.com/)
 + [gulp](http://gulpjs.com/)
 
-And, of course, you can see my running example hosted [heroku!](https://books-ive-read.herokuapp.com/)
+And, of course, you can see my running example hosted [heroku!](http://books-ive-read.herokuapp.com/)
 
 #### TO-DO's & FUTURE FEATURES
 
